@@ -1,0 +1,5 @@
+Makefile
+META.yml
+MYMETA.yml
+MYMETA.json
+*.gz
