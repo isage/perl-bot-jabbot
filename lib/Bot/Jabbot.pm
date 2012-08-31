@@ -70,7 +70,7 @@ sub new
     $self->{cl}->add_extension ($self->{muc});
 
     $self->{cl}->set_presence (undef, $self->{config}->{status} || "", 1);
-    $self->{cl}->add_account ($self->{config}->{jid}, $self->{config}->{password},undef,undef,{resource => "Bot"});
+    $self->{cl}->add_account ($self->{config}{jid},$self->{config}{password},$self->{config}{host},$self->{config}{port},{resource => $self->{config}{resource} || "Bot"});
     while (my ($name,$mod)=each(%{$self->{config}->{modules}}))
     {
         print "loading $mod \n";
@@ -314,6 +314,9 @@ __END__
 =head1 CONFIGURATION
 
   jid: jabbot@somehost.ru
+  host: jabber.somehost.ru #optional
+  port: 5222 #optional
+  resource: Jabbot #optional
   password: somepassword
   nickname: Jabbot
   debug: 0
