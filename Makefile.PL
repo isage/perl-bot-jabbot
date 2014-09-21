@@ -10,7 +10,7 @@ WriteMakefile
           'PREREQ_PM' => {
                             'AnyEvent' => '5.202',
                             'AnyEvent::XMPP' => '0.51',
-                            'Class::MOP' => 0,
+                            'Class::Load' => 0,
                             'Encode' => 0,
                             'Config::Any' => 0,
                             'Data::Localize' => ' 0.00010',
