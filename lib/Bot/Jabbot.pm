@@ -34,9 +34,9 @@ use AnyEvent::XMPP::Ext::MUC;
 use AnyEvent::XMPP::Namespaces qw/xmpp_ns/;
 use AnyEvent::XMPP::Util qw/node_jid res_jid/;
 use Encode qw(decode_utf8);
+use Class::Load qw(load_class);
 use Config::Any::YAML;
 use Data::Dumper;
-use Class::MOP;
 use Data::Localize;
 
 our $VERSION = 0.41;
@@ -74,7 +74,7 @@ sub new
     while (my ($name,$mod)=each(%{$self->{config}->{modules}}))
     {
         print "loading $mod \n";
-        Class::MOP::load_class($mod);
+        load_class $mod;
         $self->{modules}->{$name}=$mod->new($self->{config}->{lang} || "en");
     }
     my $calldir = $class;
@@ -355,7 +355,7 @@ B<lang> - language of the bot (Language files are stored in the Jabbot/I18N subd
 
 =item AnyEvent::XMPP
 
-=item Class::MOP
+=item Class::Load
 
 =item Config::Any
 
